@@ -24,5 +24,10 @@ module.exports = function(defaults) {
   app.import('bower_components/mocha/mocha.js');
   app.import('bower_components/mocha/mocha.css');
 
+  // Codemirror.
+  app.import('bower_components/codemirror/lib/codemirror.js');
+  app.import('bower_components/codemirror/mode/javascript/javascript.js');
+  app.import('bower_components/codemirror/lib/codemirror.css');
+
   return app.toTree();
 };
