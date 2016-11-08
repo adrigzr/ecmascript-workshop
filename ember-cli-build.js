@@ -20,6 +20,10 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
+  // Bootstrap.
+  app.import('bower_components/bootstrap/dist/js/bootstrap.js');
+  app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+
   // Mocha.
   app.import('bower_components/mocha/mocha.js');
   app.import('bower_components/mocha/mocha.css');
@@ -28,6 +32,7 @@ module.exports = function(defaults) {
   app.import('bower_components/codemirror/lib/codemirror.js');
   app.import('bower_components/codemirror/mode/javascript/javascript.js');
   app.import('bower_components/codemirror/lib/codemirror.css');
+  app.import('bower_components/codemirror/theme/solarized.css');
 
   return app.toTree();
 };
