@@ -10,6 +10,20 @@ describe('Module', function() {
 		});
 	});
 });
-`
+`,
+
+	actions: {
+		onPass(...args) {
+			console.log('pass', ...args);
+		},
+
+		onFail(...args) {
+			console.log('fail', ...args);
+		},
+
+		onEnd(...args) {
+			console.log('end', ...args);
+		}
+	}
 
 });

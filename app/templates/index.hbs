@@ -5,6 +5,10 @@
 {{/codemirror-editor}}
 
 {{textarea value=code}}
-{{mocha-runner code=code}}
+{{mocha-runner
+	code=code
+	onPass=(action 'onPass')
+	onFail=(action 'onFail')
+	onEnd=(action 'onEnd')}}
 
 {{outlet}}
