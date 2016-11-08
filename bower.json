@@ -8,6 +8,7 @@
     "hammer.js": "^2.0.8",
     "matchMedia": "0.2.0",
     "bootstrap": "^3.3.7",
-    "showdown": "^1.4.4"
+    "showdown": "^1.4.4",
+    "bootstrap-solarized-theme": "^1.0.3"
   }
 }

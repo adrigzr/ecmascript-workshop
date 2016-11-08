@@ -26,6 +26,9 @@ module.exports = function(defaults) {
 	app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 	app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 
+	// Solarized bootstrap theme
+	app.import('bower_components/bootstrap-solarized-theme/dist/css/solarized-dark-theme.css');
+
 	// Mocha.
 	app.import('bower_components/mocha/mocha.js');
 	app.import('bower_components/mocha/mocha.css');
