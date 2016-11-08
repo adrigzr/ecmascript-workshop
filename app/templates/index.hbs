@@ -1,0 +1,16 @@
+
+<p>
+  The left sidenav will "lock open" on a medium (>=960px wide) device.
+</p>
+<p>
+  Left sidenav is {{if leftSideBarOpen "opened" "closed"}}
+</p>
+
+{{#paper-sidenav-toggle name="left" as |toggleAction|}}
+  {{#paper-button raised=true classNames="hide-gt-sm" onClick=(action toggleAction)}}
+    Toggle
+  {{/paper-button}}
+{{/paper-sidenav-toggle}}
+
+
+{{outlet}}
