@@ -1,41 +1,41 @@
-{{#paper-sidenav-container class="inner-sidenav" }}
-  {{!-- menu --}}
-  {{#paper-sidenav class="md-whiteframe-z2" name="left" open=leftSideBarOpen onToggle=(action (mut leftSideBarOpen)) }}
-    {{!-- title --}}
-    {{#paper-toolbar as |toolbar|}}
-      {{#paper-toolbar-tools}}Katas{{/paper-toolbar-tools}}
-    {{/paper-toolbar}}
-    {{!-- items --}}
-    {{#paper-content padding=true}}
-      Kata 1
-    {{/paper-content}}
-    {{#paper-content padding=true}}
-      Kata 2
-    {{/paper-content}}
-    {{#paper-content padding=true}}
-      ...
-    {{/paper-content}}
-  {{/paper-sidenav}}
+{{#paper-sidenav-container class="inner-sidenav full-height"}}
+	{{!-- menu --}}
+	{{#paper-sidenav class="md-whiteframe-z2" name="left" open=leftSideBarOpen onToggle=(action (mut leftSideBarOpen)) }}
+		{{!-- title --}}
+		{{#paper-toolbar as |toolbar|}}
+			{{#paper-toolbar-tools}}Katas{{/paper-toolbar-tools}}
+		{{/paper-toolbar}}
+		{{!-- items --}}
+		{{#paper-content padding=true}}
+			Kata 1
+		{{/paper-content}}
+		{{#paper-content padding=true}}
+			Kata 2
+		{{/paper-content}}
+		{{#paper-content padding=true}}
+			...
+		{{/paper-content}}
+	{{/paper-sidenav}}
 
-  {{!-- page content --}}
-  {{#paper-card-content class="flex" }}
-    {{!-- navbar --}}
-    {{#paper-toolbar as |toolbar|}}
-      {{#toolbar.tools}}
-        {{!-- menu button --}}
-        {{#paper-button iconButton=true onClick=(action (mut leftSideBarOpen))}}
-          {{paper-icon "menu"}}
-        {{/paper-button}}
-        {{!-- title --}}
-        <h2>Toolbar with Standard Buttons</h2>
-        {{!-- separator --}}
-        <span class="flex"></span>
-        {{!-- buttons --}}
-      {{/toolbar.tools}}
-    {{/paper-toolbar}}
+	{{!-- page content --}}
+	{{#paper-card-content class="flex"}}
+		{{!-- navbar --}}
+		{{#paper-toolbar as |toolbar|}}
+			{{#toolbar.tools}}
+				{{!-- menu button --}}
+				{{#paper-button iconButton=true onClick=(action (mut leftSideBarOpen))}}
+					{{paper-icon "menu"}}
+				{{/paper-button}}
+				{{!-- title --}}
+				<h2>Toolbar with Standard Buttons</h2>
+				{{!-- separator --}}
+				<span class="flex"></span>
+				{{!-- buttons --}}
+			{{/toolbar.tools}}
+		{{/paper-toolbar}}
 
-    <div class="layout-fill layout-align-start-center layout-column" style="height: 500px">
-      {{outlet}}
-    </div>
-  {{/paper-card-content}}
+		<div class="layout-fill layout-align-start-center layout-column full-height">
+			{{outlet}}
+		</div>
+	{{/paper-card-content}}
 {{/paper-sidenav-container}}

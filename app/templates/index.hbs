@@ -1,14 +1,17 @@
-{{#codemirror-editor}}
-  function test() {
-    return 'foo!';
-  }
-{{/codemirror-editor}}
+<div class="row full-height full-width">
+	<div class="col-xs-12 col-md-6 full-height">
+		<div class="row full-height">
+			{{kata-description kata=kata class="col-xs-12 half-height scroll"}}
 
-{{textarea value=code}}
-{{mocha-runner
-	code=code
-	onPass=(action 'onPass')
-	onFail=(action 'onFail')
-	onEnd=(action 'onEnd')}}
+			{{codemirror-editor code=code class="col-xs-12 half-height scroll"}}
+		</div>
+	</div>
+
+	{{mocha-runner class="col-xs-12 col-md-6 full-height scroll"
+		code=code
+		onPass=(action 'onPass')
+		onFail=(action 'onFail')
+		onEnd=(action 'onEnd')}}
+</div>
 
 {{outlet}}
