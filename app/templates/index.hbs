@@ -1,17 +1,5 @@
-<div class="row full-height full-width">
-	<div class="col-xs-12 col-md-6 full-height">
-		<div class="row full-height">
-			{{kata-description kata=kata class="col-xs-12 half-height scroll"}}
-
-			{{codemirror-editor code=code class="col-xs-12 half-height scroll"}}
-		</div>
-	</div>
-
-	{{mocha-runner class="col-xs-12 col-md-6 full-height scroll"
-		code=code
-		onPass=(action 'onPass')
-		onFail=(action 'onFail')
-		onEnd=(action 'onEnd')}}
-</div>
+{{#paper-button raised=true onClick=(transition-to 'kata' 1)}}
+    Kata 1
+{{/paper-button}}
 
 {{outlet}}

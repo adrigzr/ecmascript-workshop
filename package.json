@@ -39,7 +39,9 @@
     "ember-export-application-global": "^1.0.5",
     "ember-load-initializers": "^0.5.1",
     "ember-paper": "1.0.0-alpha.7",
+    "ember-reactive-helpers": "^0.4.0",
     "ember-resolver": "^2.0.3",
+    "eslint": "^3.9.1",
     "eslint-config-bbva": "^1.0.4",
     "loader.js": "^4.0.1"
   }
