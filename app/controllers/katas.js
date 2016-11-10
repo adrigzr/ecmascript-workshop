@@ -52,7 +52,6 @@ export default Ember.Controller.extend({
 
 	actions: {
 		onChange(code) {
-			// Update values
 			Ember.run.debounce(this, this._updateCode, code, DEBOUNCE_DELAY);
 		},
 
@@ -61,6 +60,7 @@ export default Ember.Controller.extend({
 
 			// Push state
 			this.get('lastResults').pushObject(obj);
+
 			// Update toolbar title
 			this.set('testResultDescription', obj.title);
 		},

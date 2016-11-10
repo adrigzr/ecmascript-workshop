@@ -1,0 +1,5 @@
+{{yield (hash onEvent=(action 'onEvent'))}}
+
+{{#each messages as |message|}}
+	<div class="alert alert-{{message.type}}" role="alert">{{message.title}}</div>
+{{/each}}

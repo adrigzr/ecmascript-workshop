@@ -3,27 +3,53 @@
 	var Mocha = window.Mocha;
 	var mocha = window.mocha;
 
-	function onTestEvent(test, err) {
-		var data = {
-			title: test.title,
-			type: test.type,
-			body: test.body,
-			state: test.state
-		};
+	function setProperties(src, dst, properties) {
+		properties.forEach(function(property) {
+			setProperty(src, dst, property);
+		});
+	}
 
-		if (err) {
-			data.err = {
-				message: err.message,
-				stack: err.stack
-			};
+	function setProperty(src, dst, property) {
+		var value = dst[property];
+
+		if (typeof value !== "undefined") {
+			src[property] = value;
+		}
+	}
+
+	function unfoldTest(test) {
+		var properties = ['title', 'type', 'body', 'state', 'root'];
+		var data = {};
+
+		setProperties(data, test, properties);
+
+		if (test.parent) {
+			data.parent = unfoldTest(test.parent);
 		}
 
-		window.parent.postMessage(data, '*');
+		return data;
+	}
+
+	function onTestEvent(event) {
+		return (test, err) => {
+			var data = unfoldTest(test);
+
+			data.event = event;
+
+			if (err) {
+				data.err = {
+					message: err.message,
+					stack: err.stack
+				};
+			}
+
+			window.parent.postMessage(data, '*');
+		};
 	}
 
 	function onException(reason, file, row, column, err) {
 		var data = {
-			state: 'exception',
+			event: 'exception',
 			err: {
 				message: err.message,
 				stack: err.stack
@@ -35,7 +61,7 @@
 
 	function onEnd() {
 		var data = {
-			state: 'end'
+			event: 'end'
 		};
 
 		window.parent.postMessage(data, '*');
@@ -44,10 +70,12 @@
 	function customReporter(runner) {
 		Mocha.reporters.Base.call(this, runner);
 
-		runner.on('test', onTestEvent);
-		runner.on('fail', onTestEvent);
-		runner.on('pending', onTestEvent);
-		runner.on('test end', onTestEvent);
+		runner.on('suite', onTestEvent('suite'));
+		runner.on('test', onTestEvent('test'));
+		runner.on('fail', onTestEvent('fail'));
+		runner.on('pending', onTestEvent('pending'));
+		runner.on('test end', onTestEvent('test end'));
+		runner.on('suite end', onTestEvent('suite end'));
 		runner.on('end', onEnd);
 	}
 

@@ -20,11 +20,7 @@ export default Ember.Component.extend({
 	onMessage(message) {
 		const { data } = message;
 
-		if (data.state === 'end') {
-			if (this.onEnd) {
-				this.onEnd();
-			}
-		} else if (this.onEvent) {
+		if (this.onEvent) {
 			this.onEvent(data);
 		}
 	},

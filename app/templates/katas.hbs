@@ -3,12 +3,12 @@
 		<div class="row full-height">
 			{{kata-description kata=model.readme class="col-xs-12 half-height scroll"}}
 
-			{{mocha-runner
-				class="col-xs-12 half-height scroll"
-				suite=model.suite
-				code=code
-				onEvent=(action 'onEvent')
-				onEnd=(action 'onEnd')}}
+			{{#kata-output class="col-xs-12 half-height scroll" as |kata|}}
+				{{mocha-runner
+					suite=model.suite
+					code=code
+					onEvent=kata.onEvent}}
+			{{/kata-output}}
 		</div>
 	</div>
 
