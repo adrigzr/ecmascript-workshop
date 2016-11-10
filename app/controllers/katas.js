@@ -43,34 +43,21 @@ export default Ember.Controller.extend({
 		} else {
 			storage.set(`code.${id}`, { code });
 		}
-		// Reset results
-		this.get('lastResults').clear();
-		// Update toolbar status
-		this.set('status', STATUS.PENDING);
 	},
-
-	lastResults: [],
 
 	actions: {
 		onChange(code) {
 			Ember.run.debounce(this, this._updateCode, code, DEBOUNCE_DELAY);
 		},
 
-		onEvent(obj) {
-			console.log('event', ...arguments);
-
-			// Push state
-			this.get('lastResults').pushObject(obj);
-
-			// Update toolbar title
-			this.set('testResultDescription', obj.title);
+		onStart() {
+			// Update toolbar status
+			this.set('status', STATUS.PENDING);
 		},
 
-		onEnd() {
-			console.log('end', ...arguments);
-
+		onEnd(messages) {
 			// Update toolbar status
-			if (this.get('lastResults').some((test) => test.state === 'failed')) {
+			if (messages.some((test) => test.state === 'failed')) {
 				this.set('status', STATUS.ERROR);
 			} else {
 				this.set('status', STATUS.OK);

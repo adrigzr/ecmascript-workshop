@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 
 		messages.pushObject({
 			title: buildTitle(data),
-			type: data.state === 'failed' ? 'danger' : 'success'
+			state: data.state
 		});
 	},
 
@@ -35,6 +35,8 @@ export default Ember.Component.extend({
 		if (data.event === 'test end') {
 			this.addOutput(data);
 		}
+
+		this.sendAction('onEvent', data);
 	},
 
 	actions: {

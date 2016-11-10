@@ -3,7 +3,10 @@
 		<div class="row full-height">
 			{{kata-description kata=model.readme class="col-xs-12 half-height scroll"}}
 
-			{{#kata-output class="col-xs-12 half-height scroll" as |kata|}}
+			{{#kata-output
+				class="col-xs-12 half-height scroll"
+				onEnd=(action 'onEnd')
+				as |kata|}}
 				{{mocha-runner
 					suite=model.suite
 					code=code
