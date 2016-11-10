@@ -1,18 +1,21 @@
 import Ember from 'ember';
+import { storageFor } from 'ember-local-storage';
 
-function buildUrl(id, file) {
-	return `katas/${id}/${file}`;
+function buildUrl(path, file) {
+	return `${path}/${file}`;
 }
 
 export default Ember.Route.extend({
+	storage: storageFor('katas'),
+
 	model(params) {
-		const id = params.kata_id;
-		const readmeUrl = buildUrl(id, 'README.md');
-		const codeUrl = buildUrl(id, 'code.js');
-		const suiteUrl = buildUrl(id, 'suite.js');
+		const slug = params.kata_slug;
+		const kata = this.get('storage.katas').findBy('slug', slug);
+		const readmeUrl = `${kata.path}/README.md`;
+		const codeUrl = `${kata.path}/code.js`;
+		const suiteUrl = `${kata.path}/suite.js`;
 
 		return Ember.RSVP.hash({
-			id,
 			readme: Ember.$.get(readmeUrl),
 			code: Ember.$.get(codeUrl),
 			suite: Ember.$.get(suiteUrl)

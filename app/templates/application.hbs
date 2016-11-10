@@ -11,7 +11,7 @@
 		{{/paper-content}}
 		{{#each model as |kata|}}
 			{{#paper-content padding=true}}
-				{{#link-to 'katas' kata.id}}{{kata.name}}{{/link-to}}
+				{{#link-to 'katas' kata.slug}}{{kata.name}}{{/link-to}}
 			{{/paper-content}}
 		{{/each}}
 	{{/paper-sidenav}}
