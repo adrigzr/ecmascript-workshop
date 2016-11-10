@@ -12,7 +12,7 @@ export default Ember.Route.extend({
 
 		return Ember.RSVP.hash({
 			readme: Ember.$.get(readmeUrl),
-			kata: Ember.$.get(codeUrl),
+			code: Ember.$.get(codeUrl),
 			suite: Ember.$.get(suiteUrl)
 		});
 	}

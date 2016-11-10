@@ -668,7 +668,7 @@ broccoli-funnel-reducer@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/broccoli-funnel-reducer/-/broccoli-funnel-reducer-1.0.0.tgz#11365b2a785aec9b17972a36df87eef24c5cc0ea"
 
-broccoli-funnel@^1.0.0, broccoli-funnel@^1.0.1, broccoli-funnel@^1.0.3:
+broccoli-funnel@^1.0.0, broccoli-funnel@^1.0.1, broccoli-funnel@^1.0.3, broccoli-funnel@^1.0.9:
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/broccoli-funnel/-/broccoli-funnel-1.0.9.tgz#1b2673be66dd8a8771214e3f3aeb7325012e4580"
   dependencies:
