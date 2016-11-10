@@ -80,6 +80,10 @@ export default Ember.Controller.extend({
 				testResultIcon: icon,
 				testResultDescription: description
 			});
+		},
+
+		run() {
+			this.notifyPropertyChange('code');
 		}
 	}
 

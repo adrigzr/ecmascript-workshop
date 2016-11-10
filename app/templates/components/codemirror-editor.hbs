@@ -1,4 +1,9 @@
-{{yield}}
+{{!-- Editor toolbar --}}
+{{#paper-toolbar as |toolbar|}}
+	{{#toolbar.tools}}
+		{{yield}}
+	{{/toolbar.tools}}
+{{/paper-toolbar}}
 
 <textarea class="editor-content">
 	{{code}}
