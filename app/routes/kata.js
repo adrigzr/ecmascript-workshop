@@ -7,13 +7,13 @@ function buildUrl(id, file) {
 export default Ember.Route.extend({
 	model(params) {
 		const readmeUrl = buildUrl(params.kata_id, 'README.md');
-		const kataUrl = buildUrl(params.kata_id, 'kata.js');
-		const testsUrl = buildUrl(params.kata_id, 'tests.js');
+		const codeUrl = buildUrl(params.kata_id, 'code.js');
+		const suiteUrl = buildUrl(params.kata_id, 'suite.js');
 
 		return Ember.RSVP.hash({
 			readme: Ember.$.get(readmeUrl),
-			kata: Ember.$.get(kataUrl),
-			tests: Ember.$.get(testsUrl)
+			kata: Ember.$.get(codeUrl),
+			suite: Ember.$.get(suiteUrl)
 		});
 	}
 });

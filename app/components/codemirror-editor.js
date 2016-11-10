@@ -33,6 +33,18 @@ export default Ember.Component.extend({
 		this.set('instance', instance);
 	},
 
+	didUpdateAttrs(...args) {
+		this._super(...args);
+
+		const instance = this.get('instance');
+		const currentValue = instance.getValue();
+		const newValue = this.get('code');
+
+		if (instance && currentValue !== newValue) {
+			instance.setValue(newValue);
+		}
+	},
+
 	willDestroy(...args) {
 		this._super(...args);
 

@@ -4,25 +4,7 @@ const DEBOUNCE_DELAY = 500;
 
 export default Ember.Controller.extend({
 
-	suite: `
-describe('Module', function() {
-	context('in a context', function() {
-		it('does something', function() {
-			expect(a).to.be(1);
-		});
-	});
-});
-
-describe('Module', function() {
-	context('in a context', function() {
-		it('does more things', function() {
-			expect(a).to.be(2);
-		});
-	});
-});
-`,
-
-	code: 'var a = 1;',
+	code: Ember.computed.reads('model.code'),
 
 	actions: {
 		onChange(value) {

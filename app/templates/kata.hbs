@@ -5,7 +5,7 @@
 
 			{{mocha-runner
 				class="col-xs-12 half-height scroll"
-				suite=suite
+				suite=model.suite
 				code=code
 				onEvent=(action 'onEvent')
 				onEnd=(action 'onEnd')}}
@@ -13,7 +13,7 @@
 	</div>
 
 	{{#codemirror-editor
-		code=model.kata
+		code=code
 		class="col-xs-12 col-md-6 full-height scroll"
 		onChange=(action 'onChange')}}
 		{{#paper-menu position="target-right target" as |menu|}}
@@ -30,7 +30,7 @@
 
 				{{paper-divider}}
 
-				{{#content.menu-item onClick="openSomething"}}
+				{{#content.menu-item onClick=(action (mut code) model.code)}}
 					{{paper-icon "settings_backup_restore"}}
 					<span>Reset</span>
 				{{/content.menu-item}}
