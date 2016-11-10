@@ -48,6 +48,12 @@
     "ember-resolver": "^2.0.3",
     "eslint": "2.8.0",
     "eslint-config-bbva": "^1.0.4",
-    "loader.js": "^4.0.1"
+    "loader.js": "^4.0.1",
+    "walk-sync": "^0.3.1"
+  },
+  "ember-addon": {
+    "paths": [
+      "lib/katas-description"
+    ]
   }
 }

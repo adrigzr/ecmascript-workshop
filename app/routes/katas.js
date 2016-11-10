@@ -5,7 +5,6 @@ function buildUrl(id, file) {
 }
 
 export default Ember.Route.extend({
-
 	model(params) {
 		const id = params.kata_id;
 		const readmeUrl = buildUrl(id, 'README.md');

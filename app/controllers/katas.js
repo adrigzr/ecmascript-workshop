@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
 	 */
 	code: Ember.computed(function() {
 		const id = this.get('model.id');
-		const lastCode = this.get(`storage.${id}.code`);
+		const lastCode = this.get(`storage.code.${id}.code`);
 
 		return lastCode || this.get('model.code');
 	}),
@@ -30,14 +30,14 @@ export default Ember.Controller.extend({
 	_updateCode(code) {
 		const id = this.get('model.id');
 		const storage = this.get('storage');
-		const kata = this.get(`storage.${id}`);
+		const kata = this.get(`storage.code.${id}`);
 
 		this.set('code', code);
 		// Persist last code changes
 		if (kata) {
-			storage.set(`${id}.code`, code);
+			storage.set(`code.${id}.code`, code);
 		} else {
-			storage.set(`${id}`, { code });
+			storage.set(`code.${id}`, { code });
 		}
 		// Reset results
 		this.get('lastResults').clear();

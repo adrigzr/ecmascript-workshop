@@ -4,7 +4,10 @@ const Storage = StorageObject.extend();
 
 Storage.reopenClass({
 	initialState() {
-		return {};
+		return {
+			katas: [],
+			code: {}
+		};
 	}
 });
 
