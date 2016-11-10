@@ -16,26 +16,42 @@
 		code=code
 		class="col-xs-12 col-md-6 full-height scroll"
 		onChange=(action 'onChange')}}
-		{{#paper-menu position="target-right target" as |menu|}}
-			{{#menu.trigger}}
-				{{#paper-button iconButton=true}}
-					{{paper-icon "more_vert"}}
+		{{!-- Material editor menu --}}
+
+		{{!-- Editor toolbar --}}
+		{{#paper-toolbar as |toolbar|}}
+			{{#toolbar.tools}}
+				{{!-- menu button --}}
+				{{#paper-button iconButton=true onClick=(action (mut leftSideBarOpen))}}
+					{{paper-icon testResultIcon}}
 				{{/paper-button}}
-			{{/menu.trigger}}
-			{{#menu.content width=4 as |content|}}
-				{{#content.menu-item onClick="openSomething"}}
-					{{paper-icon "input"}}
-					<span>Run</span>
-				{{/content.menu-item}}
+				{{!-- title --}}
+				<h2>{{testResultDescription}}</h2>
+				{{!-- separator --}}
+				<span class="flex"></span>
+				{{!-- Contextual menu --}}
+				{{#paper-menu position="target-right target" as |menu|}}
+					{{#menu.trigger}}
+						{{#paper-button iconButton=true}}
+							{{paper-icon "more_vert"}}
+						{{/paper-button}}
+					{{/menu.trigger}}
+					{{#menu.content width=4 as |content|}}
+						{{#content.menu-item onClick="openSomething"}}
+							{{paper-icon "input"}}
+							<span>Run</span>
+						{{/content.menu-item}}
 
-				{{paper-divider}}
+						{{paper-divider}}
 
-				{{#content.menu-item onClick=(action (mut code) model.code)}}
-					{{paper-icon "settings_backup_restore"}}
-					<span>Reset</span>
-				{{/content.menu-item}}
-			{{/menu.content}}
-		{{/paper-menu}}
+						{{#content.menu-item onClick=(action (mut code) model.code)}}
+							{{paper-icon "settings_backup_restore"}}
+							<span>Reset</span>
+						{{/content.menu-item}}
+					{{/menu.content}}
+				{{/paper-menu}}
+			{{/toolbar.tools}}
+		{{/paper-toolbar}}
 	{{/codemirror-editor}}
 </div>
 

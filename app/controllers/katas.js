@@ -18,6 +18,13 @@ export default Ember.Controller.extend({
 	}),
 
 	/**
+	 * [close|check]
+	 */
+	testResultIcon: 'close',
+
+	testResultDescription: 'Not all tests pased',
+
+	/**
 	 * Update the code & persist in localStorage.
 	 */
 	_updateCode(code) {
@@ -32,7 +39,16 @@ export default Ember.Controller.extend({
 		} else {
 			storage.set(`${id}`, { code });
 		}
+		// Reset results
+		this.get('lastResults').clear();
+		// Update toolbar status
+		this.setProperties({
+			testResultIcon: 'timer',
+			testResultDescription: 'Running tests...'
+		});
 	},
+
+	lastResults: [],
 
 	actions: {
 		onChange(code) {
@@ -40,12 +56,30 @@ export default Ember.Controller.extend({
 			Ember.run.debounce(this, this._updateCode, code, DEBOUNCE_DELAY);
 		},
 
-		onEvent(...args) {
-			console.log('event', ...args);
+		onEvent(obj) {
+			console.log('event', ...arguments);
+
+			// Push state
+			this.get('lastResults').pushObject(obj);
+			// Update toolbar title
+			this.set('testResultDescription', obj.title);
 		},
 
-		onEnd(...args) {
-			console.log('end', ...args);
+		onEnd() {
+			console.log('end', ...arguments);
+
+			let icon = 'check';
+			let description = 'All tests pased';
+
+			// Update toolbar status
+			if (this.get('lastResults').some((test) => test.state === 'failed')) {
+				icon = 'close';
+				description = 'Not all tests pased';
+			}
+			this.setProperties({
+				testResultIcon: icon,
+				testResultDescription: description
+			});
 		}
 	}
 
