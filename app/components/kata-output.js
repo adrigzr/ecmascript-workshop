@@ -25,19 +25,45 @@ export default Ember.Component.extend({
 		});
 	},
 
+	addException(data) {
+		const messages = this.get('messages');
+
+		messages.pushObject({
+			title: `Exception: ${data.err.message}`,
+			state: data.state
+		});
+	},
+
+	sendEnd() {
+		const messages = this.get('messages');
+
+		this.sendAction('onEnd', messages);
+	},
+
+	sendStart() {
+		this.sendAction('onStart');
+	},
+
 	onEvent(data) {
 		console.log('event', data);
 
 		if (data.event === 'suite' && data.root) {
 			this.resetOutput();
-			this.sendAction('onStart');
+			this.sendStart();
 		}
 
 		if (data.event === 'test end') {
-			const messages = this.get('messages');
-
 			this.addOutput(data);
-			this.sendAction('onEnd', messages);
+		}
+
+		if (data.event === 'exception') {
+			this.resetOutput();
+			this.addException(data);
+			this.sendEnd();
+		}
+
+		if (data.event === 'suite end' && data.root) {
+			this.sendEnd();
 		}
 	},
 
