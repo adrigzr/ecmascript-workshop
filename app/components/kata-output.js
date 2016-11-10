@@ -10,6 +10,10 @@ function buildTitle(data) {
 
 export default Ember.Component.extend({
 
+	attributeBindings: ['id'],
+
+	id: 'kata-output',
+
 	messages: null,
 
 	resetOutput() {

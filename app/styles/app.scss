@@ -56,6 +56,32 @@ md-sidenav {
   }
 }
 
+.code {
+  font-family:Courier;
+  font-weight: 600;
+  padding-top: 10px;
+}
+
+#kata-output {
+  background-color: $dark;
+
+  ul {
+    list-style: none;
+
+    li {
+      @extend .code;
+
+      &.code-success{
+        color: green;
+      }
+
+      &.code-danger{
+        color: red;
+      }
+    }
+  }
+}
+
 .transition {
   -webkit-transition: all 0.4s !important;
   -moz-transition: all 0.4s !important;
@@ -65,6 +91,7 @@ md-sidenav {
 
 iframe {
   border: none;
+  display: none;
 }
 
 #mocha {
