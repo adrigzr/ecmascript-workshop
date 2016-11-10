@@ -13,12 +13,8 @@ describe('Module', function() {
 `,
 
 	actions: {
-		onPass(...args) {
-			console.log('pass', ...args);
-		},
-
-		onFail(...args) {
-			console.log('fail', ...args);
+		onEvent(...args) {
+			console.log('event', ...args);
 		},
 
 		onEnd(...args) {

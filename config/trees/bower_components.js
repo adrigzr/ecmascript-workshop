@@ -7,13 +7,17 @@ var path = require('path');
 
 module.exports = {
 
-	files: [],
+	files: [
+		'jquery/dist/jquery.min.js',
+		'mocha/mocha.js',
+		'mocha/mocha.css'
+	],
 
 	toTree: function() {
 		return new Funnel('bower_components', {
 			include: this.files,
 			getDestinationPath: function(relativePath) {
-				return 'assets/vendor/' + path.basename(relativePath);
+				return 'assets/' + path.basename(relativePath);
 			}
 		});
 	}
