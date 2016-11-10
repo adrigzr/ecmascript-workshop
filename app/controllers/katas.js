@@ -2,27 +2,31 @@ import Ember from 'ember';
 import { storageFor } from 'ember-local-storage';
 
 const DEBOUNCE_DELAY = 500;
+const STATUS = {
+	PENDING: {
+		ICON: 'timer',
+		DESC: 'Running tests...'
+	},
+	ERROR: {
+		ICON: 'close',
+		DESC: 'Not all tests pased'
+	},
+	OK: {
+		ICON: 'check',
+		DESC: 'All tests pased'
+	}
+};
 
 export default Ember.Controller.extend({
 
 	storage: storageFor('katas'),
 
-	/**
-	 * Return last edited code if exist.
-	 */
-	code: Ember.computed(function() {
-		const id = this.get('model.id');
-		const lastCode = this.get(`storage.code.${id}.code`);
-
-		return lastCode || this.get('model.code');
-	}),
+	code: Ember.computed.reads('model.code'),
 
 	/**
 	 * [close|check]
 	 */
-	testResultIcon: 'close',
-
-	testResultDescription: 'Not all tests pased',
+	status: STATUS.ERROR,
 
 	/**
 	 * Update the code & persist in localStorage.
@@ -42,10 +46,7 @@ export default Ember.Controller.extend({
 		// Reset results
 		this.get('lastResults').clear();
 		// Update toolbar status
-		this.setProperties({
-			testResultIcon: 'timer',
-			testResultDescription: 'Running tests...'
-		});
+		this.set('status', STATUS.PENDING);
 	},
 
 	lastResults: [],
@@ -68,18 +69,12 @@ export default Ember.Controller.extend({
 		onEnd() {
 			console.log('end', ...arguments);
 
-			let icon = 'check';
-			let description = 'All tests pased';
-
 			// Update toolbar status
 			if (this.get('lastResults').some((test) => test.state === 'failed')) {
-				icon = 'close';
-				description = 'Not all tests pased';
+				this.set('status', STATUS.ERROR);
+			} else {
+				this.set('status', STATUS.OK);
 			}
-			this.setProperties({
-				testResultIcon: icon,
-				testResultDescription: description
-			});
 		},
 
 		run() {

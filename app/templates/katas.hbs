@@ -21,10 +21,10 @@
 		{{!-- Contextual editor toolbar --}}
 		{{!-- Test status --}}
 		{{#paper-button iconButton=true onClick=(action (mut leftSideBarOpen))}}
-			{{paper-icon testResultIcon}}
+			{{paper-icon status.ICON}}
 		{{/paper-button}}
 		{{!-- Title --}}
-		<h2>{{testResultDescription}}</h2>
+		<h2>{{status.DESC}}</h2>
 		{{!-- Separator --}}
 		<span class="flex"></span>
 		{{!-- Contextual menu --}}

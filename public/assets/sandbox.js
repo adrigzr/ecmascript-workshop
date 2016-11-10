@@ -48,6 +48,7 @@
 	}
 
 	function onException(reason, file, row, column, err) {
+		err = err || { message: reason };
 		var data = {
 			event: 'exception',
 			err: {
