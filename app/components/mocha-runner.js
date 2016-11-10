@@ -9,7 +9,7 @@ export default Ember.Component.extend({
 
 	attributeBindings: ['sandbox', 'id', 'src'],
 
-	sandbox: 'allow-scripts',
+	sandbox: 'allow-scripts allow-same-origin',
 
 	src: '/sandbox.html',
 
@@ -33,20 +33,31 @@ export default Ember.Component.extend({
 		return this.onMessage.bind(this);
 	}),
 
-	didRender(...args) {
+	init(...args) {
 		this._super(...args);
 
-		const code = this.get('code');
-		const suite = this.get('suite');
-		const frame = this.$().get(0);
-		const message = {
-			code,
-			suite
-		};
-
 		window.addEventListener('message', this.get('onMessageBinding'));
+	},
+
+	didUpdate() {
+		const frame = this.$().get(0);
+
+		frame.contentWindow.location.reload();
+	},
+
+	didInsertElement(...args) {
+		this._super(...args);
+
+		const frame = this.$().get(0);
 
 		frame.onload = () => {
+			const code = this.get('code');
+			const suite = this.get('suite');
+			const message = {
+				code,
+				suite
+			};
+
 			frame.contentWindow.postMessage(message, '*');
 		};
 	},

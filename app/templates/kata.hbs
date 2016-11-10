@@ -3,11 +3,15 @@
 		<div class="row full-height">
 			{{kata-description kata=model class="col-xs-12 half-height scroll"}}
 
-			{{codemirror-editor code=code class="col-xs-12 half-height scroll"}}
+			{{codemirror-editor
+				code=code
+				class="col-xs-12 half-height scroll"
+				onChange=(action 'onChange')}}
 		</div>
 	</div>
 
 	{{mocha-runner class="col-xs-12 col-md-6 full-height scroll"
+		suite=suite
 		code=code
 		onEvent=(action 'onEvent')
 		onEnd=(action 'onEnd')}}

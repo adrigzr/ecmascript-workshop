@@ -18,6 +18,18 @@
 		window.parent.postMessage(data, '*');
 	}
 
+	function onException(reason, file, row, column, err) {
+		var data = {
+			state: 'exception',
+			err: {
+				message: err.message,
+				stack: err.stack
+			}
+		};
+
+		window.parent.postMessage(data, '*');
+	}
+
 	function onEnd() {
 		var data = {
 			state: 'end'
@@ -56,5 +68,6 @@
 		mocha.run();
 	}
 
+	window.onerror = onException;
 	window.addEventListener('message', onMessage);
 }(window))
