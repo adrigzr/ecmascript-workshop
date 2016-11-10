@@ -5,6 +5,7 @@
 
 			{{#kata-output
 				class="col-xs-12 half-height scroll"
+				onStart=(action 'onStart')
 				onEnd=(action 'onEnd')
 				as |kata|}}
 				{{mocha-runner

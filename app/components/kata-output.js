@@ -30,13 +30,15 @@ export default Ember.Component.extend({
 
 		if (data.event === 'suite' && data.root) {
 			this.resetOutput();
+			this.sendAction('onStart');
 		}
 
 		if (data.event === 'test end') {
-			this.addOutput(data);
-		}
+			const messages = this.get('messages');
 
-		this.sendAction('onEvent', data);
+			this.addOutput(data);
+			this.sendAction('onEnd', messages);
+		}
 	},
 
 	actions: {

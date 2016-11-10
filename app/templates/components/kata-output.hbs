@@ -1,5 +1,5 @@
 {{yield (hash onEvent=(action 'onEvent'))}}
 
 {{#each messages as |message|}}
-	<div class="alert alert-{{message.type}}" role="alert">{{message.title}}</div>
+	<div class="alert alert-{{if (eq message.state 'failed') 'danger' 'success'}}" role="alert">{{message.title}}</div>
 {{/each}}
