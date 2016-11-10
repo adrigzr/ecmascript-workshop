@@ -3,17 +3,20 @@
 	var Mocha = window.Mocha;
 	var mocha = window.mocha;
 
-	function onEvent(e) {
+	function onTestEvent(test, err) {
 		var data = {
-			title: e.title,
-			err: {
-				message: e.err.message,
-				stack: e.err.stack
-			},
-			type: e.type,
-			body: e.body,
-			state: e.state
+			title: test.title,
+			type: test.type,
+			body: test.body,
+			state: test.state
 		};
+
+		if (err) {
+			data.err = {
+				message: err.message,
+				stack: err.stack
+			};
+		}
 
 		window.parent.postMessage(data, '*');
 	}
@@ -41,8 +44,10 @@
 	function customReporter(runner) {
 		Mocha.reporters.Base.call(this, runner);
 
-		runner.on('pass', onEvent);
-		runner.on('fail', onEvent);
+		runner.on('test', onTestEvent);
+		runner.on('fail', onTestEvent);
+		runner.on('pending', onTestEvent);
+		runner.on('test end', onTestEvent);
 		runner.on('end', onEnd);
 	}
 

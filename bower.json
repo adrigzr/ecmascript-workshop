@@ -9,6 +9,7 @@
     "matchMedia": "0.2.0",
     "bootstrap": "^3.3.7",
     "showdown": "^1.4.4",
-    "bootstrap-solarized-theme": "^1.0.3"
+    "bootstrap-solarized-theme": "^1.0.3",
+    "expect.js": "^0.3.1"
   }
 }
