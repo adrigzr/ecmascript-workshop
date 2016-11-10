@@ -20,7 +20,8 @@ export default Ember.Component.extend({
 			mode: 'javascript',
 			lineNumbers: true,
 			reindentOnLoad: true,
-			theme: 'solarized dark'
+			theme: 'solarized dark',
+			clearWhenEmpty: false
 		});
 
 		instance.on('change', (e) => {

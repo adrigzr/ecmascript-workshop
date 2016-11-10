@@ -1,20 +1,42 @@
 <div class="row full-height full-width">
 	<div class="col-xs-12 col-md-6 full-height">
 		<div class="row full-height">
-			{{kata-description kata=model class="col-xs-12 half-height scroll"}}
+			{{kata-description kata=model.readme class="col-xs-12 half-height scroll"}}
 
-			{{codemirror-editor
-				code=code
+			{{mocha-runner
 				class="col-xs-12 half-height scroll"
-				onChange=(action 'onChange')}}
+				suite=suite
+				code=code
+				onEvent=(action 'onEvent')
+				onEnd=(action 'onEnd')}}
 		</div>
 	</div>
 
-	{{mocha-runner class="col-xs-12 col-md-6 full-height scroll"
-		suite=suite
-		code=code
-		onEvent=(action 'onEvent')
-		onEnd=(action 'onEnd')}}
+	{{#codemirror-editor
+		code=model.kata
+		class="col-xs-12 col-md-6 full-height scroll"
+		onChange=(action 'onChange')}}
+		{{#paper-menu position="target-right target" as |menu|}}
+			{{#menu.trigger}}
+				{{#paper-button iconButton=true}}
+					{{paper-icon "more_vert"}}
+				{{/paper-button}}
+			{{/menu.trigger}}
+			{{#menu.content width=4 as |content|}}
+				{{#content.menu-item onClick="openSomething"}}
+					{{paper-icon "input"}}
+					<span>Run</span>
+				{{/content.menu-item}}
+
+				{{paper-divider}}
+
+				{{#content.menu-item onClick="openSomething"}}
+					{{paper-icon "settings_backup_restore"}}
+					<span>Reset</span>
+				{{/content.menu-item}}
+			{{/menu.content}}
+		{{/paper-menu}}
+	{{/codemirror-editor}}
 </div>
 
 {{outlet}}
