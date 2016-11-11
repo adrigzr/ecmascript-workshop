@@ -3,7 +3,8 @@
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var mergeTrees = require('broccoli-merge-trees');
-var bowerComponentsBuilder = require('./config/trees');
+var bowerComponentsBuilder = require('./config/trees/bower_components');
+var nodeModulesBuilder = require('./config/trees/node_modules');
 
 module.exports = function(defaults) {
 	var app = new EmberApp(defaults, {
@@ -36,7 +37,11 @@ module.exports = function(defaults) {
 	app.import('bower_components/codemirror/lib/codemirror.css');
 	app.import('bower_components/codemirror/theme/solarized.css');
 
-	var trees = [bowerComponentsBuilder.toTree(), app.toTree()];
+	var trees = [
+		bowerComponentsBuilder.toTree(),
+		nodeModulesBuilder.toTree(),
+		app.toTree()
+	];
 
 	return mergeTrees(trees);
 };
