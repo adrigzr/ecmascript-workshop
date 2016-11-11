@@ -1,4 +1,10 @@
 /* eslint-disable */
+"use strict";
+
+function callCode(code) {
+  eval(code);
+}
+
 (function(window) {
 	var Mocha = window.Mocha;
 	var mocha = window.mocha;
@@ -92,11 +98,11 @@
 			ui: 'bdd'
 		});
 
-		// Inject code.
-		eval(e.data.code);
+		// Append code.
+		var code = e.data.code.concat(e.data.suite);
 
-		// Inject suite.
-		eval(e.data.suite);
+		// Inject code.
+		callCode(code);
 
 		// Run mocha.
 		mocha.run();

@@ -1,8 +1,9 @@
-/*jshint node:true*/
+/* jshint node:true*/
+/* eslint-disable */
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var mergeTrees = require('broccoli-merge-trees');
-var bowerComponentsBuilder = require('./config/trees/bower_components');
+var bowerComponentsBuilder = require('./config/trees');
 
 module.exports = function(defaults) {
 	var app = new EmberApp(defaults, {
@@ -28,10 +29,6 @@ module.exports = function(defaults) {
 
 	// Solarized bootstrap theme
 	app.import('bower_components/bootstrap-solarized-theme/dist/css/solarized-dark-theme.css');
-
-	// Mocha.
-	app.import('bower_components/mocha/mocha.js');
-	app.import('bower_components/mocha/mocha.css');
 
 	// Codemirror.
 	app.import('bower_components/codemirror/lib/codemirror.js');

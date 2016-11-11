@@ -3,16 +3,18 @@
 		<div class="row full-height">
 			{{kata-description kata=model.readme class="col-xs-12 half-height scroll"}}
 
-			{{#kata-output
-				class="col-xs-12 half-height scroll"
-				onStart=(action 'onStart')
-				onEnd=(action 'onEnd')
-				as |kata|}}
-				{{mocha-runner
-					suite=model.suite
-					code=code
-					onEvent=kata.onEvent}}
-			{{/kata-output}}
+			{{#babel-transpiler code=code onTranspile=(action (mut transpiled)) onError=(action 'onError')}}
+				{{#kata-output
+					class="col-xs-12 half-height scroll"
+					onStart=(action 'onStart')
+					onEnd=(action 'onEnd')
+					as |kata|}}
+					{{mocha-runner
+						suite=model.suite
+						code=transpiled
+						onEvent=kata.onEvent}}
+				{{/kata-output}}
+			{{/babel-transpiler}}
 		</div>
 	</div>
 

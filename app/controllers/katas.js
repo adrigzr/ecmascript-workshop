@@ -50,6 +50,10 @@ export default Ember.Controller.extend({
 			Ember.run.debounce(this, this._updateCode, code, DEBOUNCE_DELAY);
 		},
 
+		onError(e) {
+			Ember.onerror(e);
+		},
+
 		onStart() {
 			// Update toolbar status
 			this.set('status', STATUS.PENDING);
