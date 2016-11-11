@@ -1,12 +1,10 @@
 import Ember from 'ember';
 import { storageFor } from 'ember-local-storage';
 
-const buildOptions = (path, filename) => {
-	return {
-		dataType: 'text',
-		url: `${path}/${filename}`
-	};
-};
+const buildOptions = (path, filename) => ({
+	dataType: 'text',
+	url: `${path}/${filename}`
+});
 
 export default Ember.Route.extend({
 	storage: storageFor('katas'),

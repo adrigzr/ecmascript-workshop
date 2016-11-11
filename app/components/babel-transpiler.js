@@ -5,6 +5,10 @@ const { babel } = window;
 
 export default Ember.Component.extend({
 
+	attributeBindings: ['id'],
+
+	id: 'babel-transpiler',
+
 	didReceiveAttrs(...args) {
 		this._super(...args);
 
