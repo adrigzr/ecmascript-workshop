@@ -10,7 +10,17 @@ export default Ember.Route.extend({
 	storage: storageFor('katas'),
 
 	model(params) {
-		const kata = this.get('storage.katas').findBy('slug', params.kata_slug);
+		let katas = this.get('storage.katas');
+		// Flatten the array & find the kata
+		const kata = katas.reduce((prev, curr) => {
+			let prevArray = prev;
+
+			if (!Array.isArray(prev)) {
+				prevArray = [prev];
+			}
+
+			return prevArray.concat(curr.childs || curr);
+		}).findBy('slug', params.kata_slug);
 
 		return Ember.RSVP.hash({
 			readme: Ember.$.get(buildOptions(kata.path, 'README.md')),

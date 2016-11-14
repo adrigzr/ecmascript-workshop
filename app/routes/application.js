@@ -6,9 +6,11 @@ export default Ember.Route.extend({
 
 	model() {
 		return Ember.$.get('katas/definition.json').then((data) => {
-			this.get('storage').set('katas', data.katas);
+			const katas = data[0].childs;
 
-			return data.katas;
+			this.get('storage').set('katas', katas);
+
+			return katas;
 		});
 	}
 });
