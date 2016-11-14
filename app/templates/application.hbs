@@ -9,24 +9,11 @@
 		{{#paper-content padding=true}}
 			{{#link-to 'index'}}Home{{/link-to}}
 		{{/paper-content}}
-		{{#each model as |kata|}}
-			{{#if kata.childs}}
-				{{#paper-content padding=true}}{{kata.name}}{{/paper-content}}
-				<ul>
-					{{#each kata.childs as |child|}}
-						<li>
-							{{#paper-content padding=true}}
-								{{#link-to 'katas' child.slug}}{{child.name}}{{/link-to}}
-							{{/paper-content}}
-						</li>
-					{{/each}}
-				</ul>
-			{{else}}
-				{{#paper-content padding=true}}
-					{{#link-to 'katas' kata.slug}}{{kata.name}}{{/link-to}}
-				{{/paper-content}}
-			{{/if}}
-		{{/each}}
+		<ul>
+			{{#each model as |kata|}}
+				{{menu-kata-item kata=kata}}
+			{{/each}}
+		</ul>
 	{{/paper-sidenav}}
 
 	{{!-- page content --}}
