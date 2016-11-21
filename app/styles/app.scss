@@ -28,6 +28,16 @@ md-content, md-sidenav {
   background-color: $light !important;
 }
 
+code {
+  background-color: $dark !important;
+}
+
+pre {
+  border: none !important;
+  padding: 0 !important;
+  background: none !important;
+}
+
 @media (min-width: 960px) {
   md-backdrop {
     display: none;

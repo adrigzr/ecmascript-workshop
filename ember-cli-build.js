@@ -37,6 +37,9 @@ module.exports = function(defaults) {
 	app.import('bower_components/codemirror/lib/codemirror.css');
 	app.import('bower_components/codemirror/theme/solarized.css');
 
+	// highlightjs
+	app.import("bower_components/highlightjs/styles/solarized-dark.css");
+
 	var trees = [
 		bowerComponentsBuilder.toTree(),
 		nodeModulesBuilder.toTree(),
