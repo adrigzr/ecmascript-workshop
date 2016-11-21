@@ -98,8 +98,8 @@ function callCode(code) {
 			ui: 'bdd'
 		});
 
-		// Append code.
-		var code = e.data.code.concat(e.data.suite);
+		// Append suite to code.
+		var code = e.data.suite.concat(e.data.code);
 
 		// Inject code.
 		callCode(code);
