@@ -6,21 +6,28 @@ const buildOptions = (path, filename) => ({
 	url: `${path}/${filename}`
 });
 
+function flattenKata(katas) {
+	const flat = [];
+
+	katas.forEach(kata => {
+		if (kata.childs.length) {
+			flat.push(...flattenKata(kata.childs));
+		} else {
+			flat.push(kata);
+		}
+	});
+
+	return flat;
+}
+
 export default Ember.Route.extend({
 	storage: storageFor('katas'),
 
 	model(params) {
 		let katas = this.get('storage.katas');
 		// Flatten the array & find the kata
-		const kata = katas.reduce((prev, curr) => {
-			let prevArray = prev;
-
-			if (!Array.isArray(prev)) {
-				prevArray = [prev];
-			}
-
-			return prevArray.concat(curr.childs || curr);
-		}).findBy('slug', params.kata_slug);
+		const kata = flattenKata(katas)
+			.findBy('slug', params.kata_slug);
 
 		return Ember.RSVP.hash({
 			readme: Ember.$.get(buildOptions(kata.path, 'README.md')),
@@ -29,12 +36,7 @@ export default Ember.Route.extend({
 		}).then((data) => {
 			const lastCode = this.get(`storage.code.${kata.id}.code`);
 
-			// Return last edited code if exist.
-			if (lastCode) {
-				data.code = lastCode;
-			}
-
-			return Object.assign({}, data, kata);
+			return Object.assign({ lastCode }, data, kata);
 		});
 	}
 });

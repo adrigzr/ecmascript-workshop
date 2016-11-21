@@ -21,7 +21,12 @@ export default Ember.Controller.extend({
 
 	storage: storageFor('katas'),
 
-	code: Ember.computed.reads('model.code'),
+	code: Ember.computed(function() {
+		const lastCode = this.get('model.lastCode');
+
+		// Return last edited code if exist.
+		return lastCode || this.get('model.code');
+	}),
 
 	/**
 	 * [close|check]
@@ -51,7 +56,7 @@ export default Ember.Controller.extend({
 		},
 
 		onError(e) {
-			Ember.onerror(e);
+			this.set('status', STATUS.ERROR);
 		},
 
 		onStart() {
