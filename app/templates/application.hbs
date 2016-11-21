@@ -22,7 +22,7 @@
 		{{#paper-toolbar as |toolbar|}}
 			{{#toolbar.tools}}
 				{{!-- menu button --}}
-				{{#paper-button iconButton=true onClick=(action (mut leftSideBarOpen))}}
+				{{#paper-button iconButton=true onClick=(action 'toggleMenu')}}
 					{{paper-icon "menu"}}
 				{{/paper-button}}
 				{{!-- title --}}

@@ -28,8 +28,21 @@ md-content, md-sidenav {
   background-color: $light !important;
 }
 
+@media (min-width: 960px) {
+  md-backdrop {
+    display: none;
+  }
+}
+
 md-sidenav {
   width: 250px;
+
+  &.md-closed.md-locked-open {
+    display: none !important;
+  }
+  &.md-locked-open {
+    display: flex !important;
+  }
 }
 
 #kata-description {

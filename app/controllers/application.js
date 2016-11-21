@@ -1,5 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-	leftSideBarOpen: false
+	leftSideBarOpen: false,
+
+	actions: {
+		toggleMenu() {
+			this.toggleProperty('leftSideBarOpen');
+		}
+	}
 });
