@@ -32,7 +32,8 @@ export default Ember.Route.extend({
 		return Ember.RSVP.hash({
 			readme: Ember.$.get(buildOptions(kata.path, 'README.md')),
 			code: Ember.$.get(buildOptions(kata.path, 'code.js')),
-			suite: Ember.$.get(buildOptions(kata.path, 'suite.js'))
+			suite: Ember.$.get(buildOptions(kata.path, 'suite.js')),
+			solution: Ember.$.get(buildOptions(kata.path, 'solution.js'))
 		}).then((data) => {
 			const lastCode = this.get(`storage.code.${kata.id}.code`);
 

@@ -60,6 +60,11 @@
 					{{paper-icon "settings_backup_restore"}}
 					<span>Reset</span>
 				{{/content.menu-item}}
+				{{!-- Reset code --}}
+				{{#content.menu-item onClick=(action (mut code) model.solution)}}
+					{{paper-icon "help_outline"}}
+					<span>Solve</span>
+				{{/content.menu-item}}
 			{{/menu.content}}
 		{{/paper-menu}}
 	{{/codemirror-editor}}
