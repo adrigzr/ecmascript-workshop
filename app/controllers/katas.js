@@ -19,10 +19,13 @@ const STATUS = {
 
 export default Ember.Controller.extend({
 
-	storage: storageFor('katas'),
+	kataStorage: storageFor('katas'),
 
-	code: Ember.computed(function() {
-		const lastCode = this.get('model.lastCode');
+	codeStorage: storageFor('code'),
+
+	code: Ember.computed('model.id', function() {
+		const id = this.get('model.id');
+		const lastCode = this.get(`codeStorage.${id}`);
 
 		// Return last edited code if exist.
 		return lastCode || this.get('model.code');
@@ -34,24 +37,20 @@ export default Ember.Controller.extend({
 	status: STATUS.ERROR,
 
 	/**
-	 * Update the code & persist in localStorage.
+	 * Update the code & persist in localkataStorage.
 	 */
 	_updateCode(code) {
 		const id = this.get('model.id');
-		const storage = this.get('storage');
-		const kata = this.get(`storage.code.${id}`);
+		const codeStorage = this.get('codeStorage');
 
-		this.set('code', code);
 		// Persist last code changes
-		if (kata) {
-			storage.set(`code.${id}.code`, code);
-		} else {
-			storage.set(`code.${id}`, { code });
-		}
+		this.set(`codeStorage.${id}`, code);
 	},
 
 	actions: {
 		onChange(code) {
+			const kataId = this.get('model.kata.id');
+
 			Ember.run.debounce(this, this._updateCode, code, DEBOUNCE_DELAY);
 		},
 
@@ -74,6 +73,13 @@ export default Ember.Controller.extend({
 		},
 
 		run() {
+			this.notifyPropertyChange('code');
+		},
+
+		resetCode() {
+			const id = this.get('model.id');
+
+			this.set(`codeStorage.${id}`);
 			this.notifyPropertyChange('code');
 		}
 	}

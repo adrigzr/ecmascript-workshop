@@ -21,10 +21,12 @@ function flattenKata(katas) {
 }
 
 export default Ember.Route.extend({
-	storage: storageFor('katas'),
+	kataStorage: storageFor('katas'),
+
+	codeStorage: storageFor('code'),
 
 	model(params) {
-		let katas = this.get('storage.katas');
+		let katas = this.get('kataStorage.content');
 		// Flatten the array & find the kata
 		const kata = flattenKata(katas)
 			.findBy('slug', params.kata_slug);
@@ -35,9 +37,9 @@ export default Ember.Route.extend({
 			suite: Ember.$.get(buildOptions(kata.path, 'suite.js')),
 			solution: Ember.$.get(buildOptions(kata.path, 'solution.js'))
 		}).then((data) => {
-			const lastCode = this.get(`storage.code.${kata.id}.code`);
+			const id = kata.slug;
 
-			return Object.assign({ lastCode }, data, kata);
+			return Object.assign({ id }, data, kata);
 		});
 	}
 });

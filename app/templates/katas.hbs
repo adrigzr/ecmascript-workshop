@@ -56,7 +56,7 @@
 				{{!-- Separator --}}
 				{{paper-divider}}
 				{{!-- Reset code --}}
-				{{#content.menu-item onClick=(action (mut code) model.code)}}
+				{{#content.menu-item onClick=(action 'resetCode')}}
 					{{paper-icon "settings_backup_restore"}}
 					<span>Reset</span>
 				{{/content.menu-item}}

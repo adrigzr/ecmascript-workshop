@@ -1,13 +1,10 @@
-import StorageObject from 'ember-local-storage/local/object';
+import StorageArray from 'ember-local-storage/local/array';
 
-const Storage = StorageObject.extend();
+const Storage = StorageArray.extend();
 
 Storage.reopenClass({
 	initialState() {
-		return {
-			katas: [],
-			code: {}
-		};
+		return [];
 	}
 });
 

@@ -53,6 +53,24 @@ md-sidenav {
   &.md-locked-open {
     display: flex !important;
   }
+
+  ul, ul li, ul li ul, ul li ul li {
+    padding-left: 5px;
+
+    md-content {
+      color: $text !important;
+      padding: 5px !important;
+
+      a.active {
+        font-weight: 600;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  ul li:last-child {
+    padding-bottom: 10px;
+  }
 }
 
 #kata-description {
