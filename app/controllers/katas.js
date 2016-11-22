@@ -76,10 +76,10 @@ export default Ember.Controller.extend({
 			this.notifyPropertyChange('code');
 		},
 
-		resetCode() {
+		changeCode(code) {
 			const id = this.get('model.id');
 
-			this.set(`codeStorage.${id}`);
+			this.set(`codeStorage.${id}`, code);
 			this.notifyPropertyChange('code');
 		}
 	}

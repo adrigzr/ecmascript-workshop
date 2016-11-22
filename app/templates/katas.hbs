@@ -5,7 +5,13 @@
 
 			{{babel-transpiler
 				code=code
-				onTranspile=(action (mut transpiled))
+				onTranspile=(action (mut transpiledCode))
+				onError=(action 'onError')
+				isVisible=false}}
+
+			{{babel-transpiler
+				code=model.suite
+				onTranspile=(action (mut transpiledSuite))
 				onError=(action 'onError')
 				isVisible=false}}
 
@@ -15,8 +21,8 @@
 				onEnd=(action 'onEnd')
 				as |kata|}}
 				{{mocha-runner
-					suite=model.suite
-					code=transpiled
+					suite=transpiledSuite
+					code=transpiledCode
 					onEvent=kata.onEvent}}
 			{{/kata-output}}
 		</div>
@@ -56,12 +62,12 @@
 				{{!-- Separator --}}
 				{{paper-divider}}
 				{{!-- Reset code --}}
-				{{#content.menu-item onClick=(action 'resetCode')}}
+				{{#content.menu-item onClick=(action 'changeCode' model.code)}}
 					{{paper-icon "settings_backup_restore"}}
 					<span>Reset</span>
 				{{/content.menu-item}}
 				{{!-- Reset code --}}
-				{{#content.menu-item onClick=(action (mut code) model.solution)}}
+				{{#content.menu-item onClick=(action 'changeCode' model.solution)}}
 					{{paper-icon "help_outline"}}
 					<span>Solve</span>
 				{{/content.menu-item}}
