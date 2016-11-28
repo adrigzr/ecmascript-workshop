@@ -5,7 +5,7 @@ class Human {
 	}
 
 	talk(word) {
-		return this.isHungry ? 'I\'m hungry' : word;
+		return this.isHungry() ? 'I\'m hungry' : word;
 	}
 }
 
@@ -29,24 +29,24 @@ describe('Class', () => {
 			expect(nerd.name).to.be('foo');
 		});
 
-		it('isHungry is not a function', () => {
+		it('isHungry is a function', () => {
 			const nerd = new Nerd(90);
 
-			expect(nerd.isHungry).to.be.a('boolean');
+			expect(nerd.isHungry).to.be.a('function');
 		});
 
 		it('returns hungry state', () => {
 			const nerd = new Nerd(90);
 
-			expect(nerd.isHungry).to.be(false);
+			expect(nerd.isHungry()).to.be(false);
 
 			nerd.food = 25;
 
-			expect(nerd.isHungry).to.be(false);
+			expect(nerd.isHungry()).to.be(false);
 
 			nerd.food = 24;
 
-			expect(nerd.isHungry).to.be(true);
+			expect(nerd.isHungry()).to.be(true);
 		});
 
 		it('talks when he\'s hungry', () => {

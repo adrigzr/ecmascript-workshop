@@ -6,7 +6,7 @@ class Nerd extends Human {
 		}
 	}
 
-	get isHungry() {
+	isHungry() {
 		return this.food < 25;
 	}
 
