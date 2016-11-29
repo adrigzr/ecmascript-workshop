@@ -1,6 +1,8 @@
 import Ember from 'ember';
 import { storageFor } from 'ember-local-storage';
+import environment from 'workshop/config/environment';
 
+const { APP } = environment;
 const DEBOUNCE_DELAY = 500;
 const STATUS = {
 	PENDING: {
@@ -22,6 +24,8 @@ export default Ember.Controller.extend({
 	kataStorage: storageFor('katas'),
 
 	codeStorage: storageFor('code'),
+
+	options: APP.babel,
 
 	code: Ember.computed('model.id', function() {
 		const id = this.get('model.id');

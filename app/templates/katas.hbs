@@ -5,15 +5,15 @@
 
 			{{babel-transpiler
 				code=code
+				options=options
 				onTranspile=(action (mut transpiledCode))
-				onError=(action 'onError')
-				isVisible=false}}
+				onError=(action 'onError')}}
 
 			{{babel-transpiler
 				code=model.suite
+				options=options
 				onTranspile=(action (mut transpiledSuite))
-				onError=(action 'onError')
-				isVisible=false}}
+				onError=(action 'onError')}}
 
 			{{#kata-output
 				class="col-xs-12 half-height scroll"

@@ -1,13 +1,15 @@
 import Ember from 'ember';
 import sendAction from '../utils/send-action';
 
-const { babel } = window;
+const { Babel } = window;
 
 export default Ember.Component.extend({
 
 	attributeBindings: ['id'],
 
 	id: 'babel-transpiler',
+
+	isVisible: false,
 
 	didReceiveAttrs(...args) {
 		this._super(...args);
@@ -17,7 +19,7 @@ export default Ember.Component.extend({
 		let output;
 
 		try {
-			output = babel.transform(input, options).code;
+			output = Babel.transform(input, options).code;
 		} catch (e) {
 			return sendAction(this, 'onError', e);
 		}

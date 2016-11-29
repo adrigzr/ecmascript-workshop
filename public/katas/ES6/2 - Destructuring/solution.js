@@ -6,6 +6,7 @@ function iconize([, , a = '', , b = 'a'] = '') {
 		if (letters.indexOf(b) < 0) {
 			return '★';
 		}
+
 		return '✓';
 	}
 

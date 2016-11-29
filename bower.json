@@ -1,18 +1,18 @@
 {
   "name": "workshop",
   "dependencies": {
+    "blob-polyfill": "^1.0.20150320",
+    "bootstrap": "^3.3.7",
+    "bootstrap-solarized-theme": "^1.0.3",
+    "codemirror": "^5.19.0",
     "ember": "~2.8.0",
     "ember-cli-shims": "0.1.1",
-    "mocha": "^3.1.2",
-    "codemirror": "^5.19.0",
-    "hammer.js": "^2.0.8",
-    "matchMedia": "0.2.0",
-    "bootstrap": "^3.3.7",
-    "showdown": "^1.4.4",
-    "bootstrap-solarized-theme": "^1.0.3",
     "expect.js": "^0.3.1",
-    "blob-polyfill": "^1.0.20150320",
+    "hammer.js": "^2.0.8",
+    "highlightjs": "^9.8.0",
     "marked": "^0.3.6",
-    "highlightjs": "^9.8.0"
+    "matchMedia": "0.2.0",
+    "mocha": "^3.1.2",
+    "showdown": "^1.4.4"
   }
 }

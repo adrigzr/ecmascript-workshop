@@ -5,11 +5,3 @@ describe('Module', function() {
 		});
 	});
 });
-
-describe('Module', function() {
-	context('in a context', function() {
-		it('does more things', function() {
-			expect(a).to.be(2);
-		});
-	});
-});
