@@ -2,7 +2,7 @@
 
 Para dominar esta kata deberás creat una función `spread`, que recibirá:
 
-  - Como primer argumento un objeto con una función `fn` y los parámetros con los que deberá ser llamada `args`.
+  - Como primer argumento un objeto con una función `fn` y los parámetros con los que deberá ser llamada `args` (`{ fn: () => {}, args: [] }`).
   - Del segundo hasta el penúltimo son datos que podemos despreciar.
   - Como último argumento un dato que deberá ser devuelto al final de la función.
 

@@ -1,27 +1,25 @@
-const computedName = 'xg3r992h3e';
-
 describe('Template strings', () => {
-	it('precompile exists', () => {
-		expect(precompile).to.be.a('function');
+	it('concat must be a function', () => {
+		expect(concat).to.be.a('function');
 	});
 
-	it('precompile returns a String', () => {
-		const result = precompile``;
+	it('concat works for 2 arguments', () => {
+		const result = concat('a', 'b');
 
-		expect(result).to.be.a('string');
+		expect(result).to.be('ab');
 	});
 
-	it('precompile returns a escaped string for: <p>foo & bar</p>', () => {
-		const result = precompile`<p>foo & bar</p>`;
+	it('concat works for 9999 arguments', () => {
+		const expected = new Array(9999).join('a');
+		const data = expected.split('');
+		const result = concat(...data);
 
-		expect(result).to.be('&lt;p&gt;foo &amp; bar&lt;/p&gt;');
+		expect(result).to.be(expected);
 	});
 
-	it('precompile returns a escaped string with vars: <p>${me} & ${you}</p>', () => {
-		const me = 'foo';
-		const you = 'bar';
-		const result = precompile`<p>${me} & ${you}</p>`;
+	it('concat works for numbers', () => {
+		const result = concat(1, 2, 3, 4, 5, 6);
 
-		expect(result).to.be('&lt;p&gt;foo &amp; bar&lt;/p&gt;');
+		expect(result).to.be('123456');
 	});
 });

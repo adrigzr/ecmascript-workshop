@@ -1,10 +1,7 @@
 # Template strings
 
-Como programador proactivo que eres has decidido crearte tu propio precompilador de HTML (**no hacer en casa**).
-Para ello te propones cambiar los caracteres HTML por su valor codificado (` ` === `&nbsp;`).
+Este ejercicio te ayudará a empezar a entender los templates de ES6.
 
-Tu compilador espera que exista una función `precompile` que haga todo el trabajo sucio y que acepta un único argumento, la cadena de texto con el fichero.
+Tu objetivo es completar la función `concat`, esta función recibirá como parámetros `2..n` argumentos que deberán ser devueltos concatenados como string.
 
-Ten en cuenta que tu entrada puede ser un string literal (`<p>I'm ${name}</p>`).
-
-Tip: **Utiliza la nueva función `replace` de String**
+¿Fácil no?

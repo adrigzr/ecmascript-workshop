@@ -1,4 +1,4 @@
-# Classes
+# Nerd Class
 
 Con motivo del aburrimiento que sufres al haberte tocado la lotería decides construir un zoo de nerds.
 Hasta ahora nunca has abierto tu propio negocio y encima no tienes experiencia con los frikis salvo que conoces los conceptos básicos de todo bicho viviente:
