@@ -1,15 +1,15 @@
 import Ember from 'ember';
 import { storageFor } from 'ember-local-storage';
 
-const buildOptions = (path, filename) => ({
+export const buildOptions = (path, filename) => ({
 	dataType: 'text',
 	url: `${path}/${filename}`
 });
 
-function flattenKata(katas) {
+export const flattenKata = (katas) => {
 	const flat = [];
 
-	katas.forEach(kata => {
+	katas.forEach((kata) => {
 		if (kata.childs.length) {
 			flat.push(...flattenKata(kata.childs));
 		} else {
@@ -18,7 +18,7 @@ function flattenKata(katas) {
 	});
 
 	return flat;
-}
+};
 
 export default Ember.Route.extend({
 	kataStorage: storageFor('katas'),
@@ -26,7 +26,7 @@ export default Ember.Route.extend({
 	codeStorage: storageFor('code'),
 
 	model(params) {
-		let katas = this.get('kataStorage.content');
+		const katas = this.get('kataStorage.content');
 		// Flatten the array & find the kata
 		const kata = flattenKata(katas)
 			.findBy('slug', params.kata_slug);

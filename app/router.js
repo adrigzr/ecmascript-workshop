@@ -8,6 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
 	this.route('katas', { path: '/katas/:kata_slug' });
+	this.route('help', { path: '/help/:kata_slug' });
 });
 
 export default Router;
