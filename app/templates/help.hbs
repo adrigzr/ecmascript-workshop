@@ -1,6 +1,14 @@
+{{#ember-wormhole to="toolbar-buttons"}}
+	{{#paper-button iconButton=true}}
+		{{#link-to 'katas' model.slug}}
+			{{paper-icon "build"}}
+		{{/link-to}}
+	{{/paper-button}}
+{{/ember-wormhole}}
+
 <div class="row full-height full-width">
-	<div class="col-xs-12 full-height">
-		{{format-markdown model}}
+	<div class="col-xs-12 full-height scroll padding-bottom">
+		{{format-markdown model.help}}
 	</div>
 </div>
 

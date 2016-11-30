@@ -13,6 +13,10 @@ export default Ember.Route.extend({
 		const kata = flattenKata(katas)
 			.findBy('slug', params.kata_slug);
 
-		return Ember.$.get(buildOptions(kata.path, 'HELP.md'));
+		return Ember.$.get(buildOptions(kata.path, 'HELP.md')).then((help) => {
+			const id = kata.slug;
+
+			return Object.assign({ id, help }, kata);
+		});
 	}
 });

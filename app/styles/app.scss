@@ -105,13 +105,17 @@ md-sidenav {
   padding-top: 10px;
 }
 
+.padding-bottom {
+  padding-bottom: 100px;
+}
+
 #kata-output {
   background-color: $dark;
   overflow-y: scroll;
 
   ul {
     list-style: none;
-    padding-bottom: 100px;
+    @extend .padding-bottom;
 
     li {
       @extend .code;

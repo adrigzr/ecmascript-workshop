@@ -1,8 +1,47 @@
-# Arrow archers
+# Arrow functions
 
-Arqueros de todos los lugares del mundo se han concentrado en la feria anual de tiro con arco.
-La competición solo empezará cuando haya más de 2 arqueros apuntados y cada uno tenga al menos 5 flechas listas para disparar.
+## ¿Qué es?
 
-¿Estás listo para ganar?
+La expresión de función flecha dispone de una sintaxis más corta comparada con la expresión de función convencional y vincula contextualmente el valor de this.
 
-![arrow](http://4.bp.blogspot.com/-Rk_1jMLElaM/TzmS2yHpd8I/AAAAAAAADJs/NW89ewZmwqY/s1600/como-apuntaban-los-arqueros.jpg)
+**Las Funciones Flecha siempre son anónimas.**
+
+```javascript
+(a, b) => { statements }
+```
+
+## Características
+
+**Return implícito:**
+
+```javascript
+(a,b) => expression // equivalente a:  => { return expression; }
+```
+
+**Paréntesis opcionales:**
+
+```javascript
+// Los paréntesis son opcionales cuando solo dispone de un argumento
+singleParam => { statements }
+singleParam => expression
+```
+
+**Argumentos opcionales:**
+
+```javascript
+// Una función sin argumentos requiere paréntesis
+() => { statements }
+```
+
+**Devolver objetos:**
+
+```javascript
+// Incluir entre paréntesis el cuerpo
+params => ({foo: bar})
+```
+
+**Parámetros REST:**
+
+```javascript
+(param1, param2, ...rest) => { statements }
+```
