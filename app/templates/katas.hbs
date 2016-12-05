@@ -40,43 +40,54 @@
 		code=code
 		class="col-xs-12 col-md-6 full-height scroll"
 		onChange=(action 'onChange')}}
-		{{!-- Material editor menu --}}
-
 		{{!-- Contextual editor toolbar --}}
+
+		{{!-- Run button --}}
+		{{#paper-button iconButton=true onClick=(action 'run')}}
+			{{paper-icon 'play-arrow'}}
+		{{/paper-button}}
+
 		{{!-- Test status --}}
-		{{#paper-button iconButton=true onClick=(action (mut leftSideBarOpen))}}
+		{{#paper-button iconButton=true}}
 			{{paper-icon status.ICON}}
 		{{/paper-button}}
+
 		{{!-- Title --}}
 		<h2>{{status.DESC}}</h2>
+
 		{{!-- Separator --}}
 		<span class="flex"></span>
+
 		{{!-- Contextual menu --}}
-		{{#paper-menu position="target-right target" as |menu|}}
+		{{#paper-menu position='target-right target' as |menu|}}
 			{{!-- Contextual menu button --}}
 			{{#menu.trigger}}
 				{{!-- Triple dot button --}}
 				{{#paper-button iconButton=true}}
-					{{paper-icon "more_vert"}}
+					{{paper-icon 'more_vert'}}
 				{{/paper-button}}
 			{{/menu.trigger}}
+
 			{{!-- Contextual menu content --}}
 			{{#menu.content width=4 as |content|}}
 				{{!-- Run tests --}}
 				{{#content.menu-item onClick=(action 'run')}}
-					{{paper-icon "input"}}
+					{{paper-icon 'play-arrow'}}
 					<span>Run</span>
 				{{/content.menu-item}}
+
 				{{!-- Separator --}}
 				{{paper-divider}}
+
 				{{!-- Reset code --}}
 				{{#content.menu-item onClick=(action 'changeCode' model.code)}}
-					{{paper-icon "settings_backup_restore"}}
+					{{paper-icon 'settings_backup_restore'}}
 					<span>Reset</span>
 				{{/content.menu-item}}
+
 				{{!-- Reset code --}}
 				{{#content.menu-item onClick=(action 'changeCode' model.solution)}}
-					{{paper-icon "help_outline"}}
+					{{paper-icon 'help_outline'}}
 					<span>Solve</span>
 				{{/content.menu-item}}
 			{{/menu.content}}
