@@ -9,9 +9,10 @@ module.exports = {
 
 	files: [
 		'jquery/dist/jquery.min.js',
-		'expect.js/index.js',
 		'mocha/mocha.js',
-		'mocha/mocha.css'
+		'mocha/mocha.css',
+		'chai/chai.js',
+		'sinon-chai/lib/sinon-chai.js'
 	],
 
 	toTree: function() {

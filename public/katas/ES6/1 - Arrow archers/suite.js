@@ -1,3 +1,5 @@
+const { expect } = chai;
+
 describe('Archer contest', function() {
 	it('does not starts if there are not archers', function() {
 		contest.archers = [];

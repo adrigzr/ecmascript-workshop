@@ -5,6 +5,7 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 var mergeTrees = require('broccoli-merge-trees');
 var bowerComponentsBuilder = require('./config/trees/bower_components');
 var nodeModulesBuilder = require('./config/trees/node_modules');
+var vendorBuilder = require('./config/trees/vendor');
 
 module.exports = function(defaults) {
 	var app = new EmberApp(defaults, {
@@ -43,6 +44,7 @@ module.exports = function(defaults) {
 	var trees = [
 		bowerComponentsBuilder.toTree(),
 		nodeModulesBuilder.toTree(),
+		vendorBuilder.toTree(),
 		app.toTree()
 	];
 

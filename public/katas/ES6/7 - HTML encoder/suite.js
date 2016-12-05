@@ -1,3 +1,5 @@
+const { expect } = chai;
+
 const computedName = 'xg3r992h3e';
 
 describe('Template strings', () => {

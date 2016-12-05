@@ -1,3 +1,5 @@
+const { expect } = chai;
+
 class Human {
 	constructor(name) {
 		this.food = 100;

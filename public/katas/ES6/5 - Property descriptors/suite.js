@@ -1,3 +1,5 @@
+const { expect } = chai;
+
 describe('patch', () => {
 	it('function exists', () => {
 		expect(patch).to.be.a('function');

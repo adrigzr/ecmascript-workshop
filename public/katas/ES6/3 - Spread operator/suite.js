@@ -1,3 +1,5 @@
+const { expect } = chai;
+
 describe('Spread operator', function() {
 	it('has correct type', function() {
 		expect(spread).to.be.a('function');

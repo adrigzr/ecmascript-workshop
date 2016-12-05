@@ -51,14 +51,12 @@
     "eslint-plugin-mocha": "^4.7.0",
     "loader.js": "^4.0.1",
     "markdown-code-highlighting": "0.1.0",
-    "walk-sync": "^0.3.1"
+    "walk-sync": "^0.3.1",
+    "babel-eslint": "^7.1.1"
   },
   "ember-addon": {
     "paths": [
       "lib/katas-description"
     ]
-  },
-  "dependencies": {
-    "babel-eslint": "^7.1.1"
   }
 }

@@ -1,9 +1,12 @@
-const planes = ['Boeing 777', 'Boeing 747', 'Boeing 737', 'Airbus A330'];
+async function bookRoomAsync(id) {
+	try {
+		const room = await asyncAPI.getRoom(id);
+		const isAvailable = await asyncAPI.checkAvailability(room);
 
-async function fly(plane) {
-	return plane;
+		if (isAvailable) {
+			return await asyncAPI.bookRoom(room);
+		}
+	} catch (e) {}
+
+	return false;
 }
-
-async function schedule() {
-	await Promise.all(planes.map(plane => fly(planes)));
-};

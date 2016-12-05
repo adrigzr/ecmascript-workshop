@@ -1,3 +1,5 @@
+const { expect } = chai;
+
 describe('Destructuring', function() {
 	it('has correct type with string arg', function() {
 		const result = iconize('');

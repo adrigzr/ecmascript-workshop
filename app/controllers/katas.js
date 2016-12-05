@@ -45,7 +45,6 @@ export default Ember.Controller.extend({
 	 */
 	_updateCode(code) {
 		const id = this.get('model.id');
-		const codeStorage = this.get('codeStorage');
 
 		// Persist last code changes
 		this.set(`codeStorage.${id}`, code);
@@ -53,8 +52,6 @@ export default Ember.Controller.extend({
 
 	actions: {
 		onChange(code) {
-			const kataId = this.get('model.kata.id');
-
 			Ember.run.debounce(this, this._updateCode, code, DEBOUNCE_DELAY);
 		},
 

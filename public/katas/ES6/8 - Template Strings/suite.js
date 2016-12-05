@@ -1,3 +1,5 @@
+const { expect } = chai;
+
 describe('Template strings', () => {
 	it('concat must be a function', () => {
 		expect(concat).to.be.a('function');
