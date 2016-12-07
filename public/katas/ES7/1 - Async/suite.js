@@ -26,7 +26,7 @@ const asyncAPI = {
 	}
 };
 
-describe('Method #bookRoomAsync', function() {
+describe('Function #bookRoomAsync', function() {
     it('exists', function() {
         expect(bookRoomAsync).to.exist;
     });

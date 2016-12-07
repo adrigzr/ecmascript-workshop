@@ -7,7 +7,6 @@
 // New function signature:
 // - bookRoomAsync(id)
 // - @returns Boolean
-// - @throws Error
 function bookRoomCB(id, callback) {
 	cbAPI.getRoom(id, function(err, room) {
 		if (err) {
