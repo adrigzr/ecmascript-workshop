@@ -14,7 +14,8 @@ module.exports = function(environment) {
 		},
 		APP: {
 			babel: {
-				presets: ['es2017']
+				presets: ['es2017'],
+				plugins:  ['transform-decorators-legacy']
 			}
 		}
 	};
