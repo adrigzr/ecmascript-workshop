@@ -1,4 +1,0 @@
-// Write here!
-function concat() {
-
-}

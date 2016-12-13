@@ -1,9 +1,0 @@
-<div class="code">Test results:</div>
-
-<ul>
-	{{#each messages as |message|}}
-		<li class="code code-{{if (eq message.state 'passed') 'success' 'danger'}}">[{{#if (eq message.state 'passed')}}&#10003;{{else}}&#10008;{{/if}}] {{message.title}}</li>
-	{{/each}}
-</ul>
-
-{{yield (hash onEvent=(action 'onEvent'))}}
