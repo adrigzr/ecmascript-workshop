@@ -37,7 +37,7 @@ function callCode(code) {
 	}
 
 	function onTestEvent(event) {
-		return (test, err) => {
+		return function(test, err) {
 			var data = unfoldTest(test);
 
 			data.event = event;
@@ -45,7 +45,7 @@ function callCode(code) {
 			if (err) {
 				data.err = {
 					message: err.message,
-					stack: err.stack
+					stack: err.stac
 				};
 			}
 

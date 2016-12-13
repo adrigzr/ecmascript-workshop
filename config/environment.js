@@ -4,7 +4,7 @@ module.exports = function(environment) {
 	var ENV = {
 		modulePrefix: 'workshop',
 		environment: environment,
-		rootURL: '/',
+		rootURL: '',
 		locationType: 'hash',
 		EmberENV: {
 			FEATURES: {

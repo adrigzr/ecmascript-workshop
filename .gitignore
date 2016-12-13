@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /tmp
+/gh-pages
 
 # dependencies
 /node_modules
