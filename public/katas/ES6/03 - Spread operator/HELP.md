@@ -9,7 +9,7 @@ El operador de propagación, **spread operator**, permite que una expresión sea
 **LLamadas a funciones:**
 
 ```javascript
-f(...iterableObj);
+func(...iterableObj);
 ```
 
 **Arrays literales:**
@@ -31,17 +31,17 @@ f(...iterableObj);
 Es común usar `Function.prototype.apply` en casos donde se require un array como contenedor de los argumentos que se enviarán a una llamada de función:
 
 ```javascript
-function f(x, y, z) { }
+function func(x, y, z) { }
 
 var args = [0, 1, 2];
 
-f.apply(null, args);
+func.apply(null, args);
 ```
 
 Con el operador spread de ES6, el ejemplo anterior se puede rescribir como:
 
 ```javascript
-f.apply(...args);
+func.apply(...args);
 ```
 
 **Construcción de arrays**
