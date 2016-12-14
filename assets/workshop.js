@@ -11395,7 +11395,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("workshop/app")["default"].create({"babel":{"presets":["es2017"],"plugins":["transform-decorators-legacy"]},"name":"workshop","version":"0.0.0+c6182d65"});
+  require("workshop/app")["default"].create({"babel":{"presets":["es2017"],"plugins":["transform-decorators-legacy"]},"name":"workshop","version":"0.0.0+b482dee7"});
 }
 
 /* jshint ignore:end */
