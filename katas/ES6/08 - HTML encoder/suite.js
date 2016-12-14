@@ -16,7 +16,7 @@ describe('Template strings', () => {
 	it('precompile returns a escaped string for: <p>foo & bar</p>', () => {
 		const result = precompile`<p>foo & bar</p>`;
 
-		expect(result).to.be('&lt;p&gt;foo &amp; bar&lt;/p&gt;');
+		expect(result).to.equal('&lt;p&gt;foo &amp; bar&lt;/p&gt;');
 	});
 
 	it('precompile returns a escaped string with vars: <p>${me} & ${you}</p>', () => {
@@ -24,6 +24,6 @@ describe('Template strings', () => {
 		const you = 'bar';
 		const result = precompile`<p>${me} & ${you}</p>`;
 
-		expect(result).to.be('&lt;p&gt;foo &amp; bar&lt;/p&gt;');
+		expect(result).to.equal('&lt;p&gt;foo &amp; bar&lt;/p&gt;');
 	});
 });

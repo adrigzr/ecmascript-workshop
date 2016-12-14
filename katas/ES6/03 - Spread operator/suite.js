@@ -7,7 +7,7 @@ describe('Spread operator', function() {
 
 	it('calls first parameter function no args', function() {
 		const fn = (...args) => {
-			expect(args.length).to.be(0);
+			expect(args.length).to.equal(0);
 		};
 
 		spread({ fn, args: [] });
@@ -15,9 +15,9 @@ describe('Spread operator', function() {
 
 	it('calls first parameter function with three args', function() {
 		const fn = (...params) => {
-			expect(params[0]).to.be('first');
-			expect(params[1]).to.be('second');
-			expect(params[2]).to.be('third');
+			expect(params[0]).to.equal('first');
+			expect(params[1]).to.equal('second');
+			expect(params[2]).to.equal('third');
 		};
 
 		spread({ fn, args: ['first', 'second', 'third'] });
@@ -32,7 +32,7 @@ describe('Spread operator', function() {
 
 		const fn = (...params) => {
 			for (let i=0; i<1000; i++) {
-				expect(params[i]).to.be(i);
+				expect(params[i]).to.equal(i);
 			}
 		};
 
@@ -42,7 +42,7 @@ describe('Spread operator', function() {
 	it('returns last of 3 arguments', function() {
 		const obj = { fn: () => {}, args: [] };
 
-		expect(spread(obj, 'ignore', 'last')).to.be('last');
+		expect(spread(obj, 'ignore', 'last')).to.equal('last');
 	});
 
 	it('returns last of 1000 arguments', function() {
@@ -54,6 +54,6 @@ describe('Spread operator', function() {
 		}
 		args.push('last');
 
-		expect(spread(obj, ...args)).to.be('last');
+		expect(spread(obj, ...args)).to.equal('last');
 	});
 });
