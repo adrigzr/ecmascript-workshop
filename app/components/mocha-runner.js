@@ -11,7 +11,7 @@ export default Ember.Component.extend({
 
 	sandbox: 'allow-scripts allow-same-origin',
 
-	src: '/sandbox.html',
+	src: 'sandbox.html',
 
 	onEvent: null,
 
