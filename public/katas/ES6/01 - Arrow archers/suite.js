@@ -4,7 +4,7 @@ describe('Archer contest', function() {
 	it('does not starts if there are not archers', function() {
 		contest.archers = [];
 
-		expect(contest.archersReady()).to.be(false);
+		expect(contest.archersReady()).to.equal(false);
 	});
 
 	it('does not starts if there are less than 10 archers', function() {
@@ -12,7 +12,7 @@ describe('Archer contest', function() {
 			{ arrows: 5 }
 		];
 
-		expect(contest.archersReady()).to.be(false);
+		expect(contest.archersReady()).to.equal(false);
 	});
 
 	it('does not starts if there are 2 archers', function() {
@@ -21,7 +21,7 @@ describe('Archer contest', function() {
 			{ arrows: 5 }
 		];
 
-		expect(contest.archersReady()).to.be(false);
+		expect(contest.archersReady()).to.equal(false);
 	});
 
 	it('starts if there are more than 2 archers', function() {
@@ -31,7 +31,7 @@ describe('Archer contest', function() {
 			{ arrows: 5 }
 		];
 
-		expect(contest.archersReady()).to.be(true);
+		expect(contest.archersReady()).to.equal(true);
 	});
 
 	it('does not starts if archers does not have enough arrows', function() {
@@ -41,7 +41,7 @@ describe('Archer contest', function() {
 			{ arrows: 5 }
 		];
 
-		expect(contest.archersReady()).to.be(false);
+		expect(contest.archersReady()).to.equal(false);
 	});
 
 	it('does not starts if archers does not have enough arrows', function() {
@@ -51,7 +51,7 @@ describe('Archer contest', function() {
 			{ arrows: 1 }
 		];
 
-		expect(contest.archersReady()).to.be(false);
+		expect(contest.archersReady()).to.equal(false);
 	});
 
 	it('starts if archers have enough arrows', function() {
@@ -61,7 +61,7 @@ describe('Archer contest', function() {
 			{ arrows: 5 }
 		];
 
-		expect(contest.archersReady()).to.be(true);
+		expect(contest.archersReady()).to.equal(true);
 	});
 
 	it('starts if archers have a lot of arrows', function() {
@@ -71,6 +71,6 @@ describe('Archer contest', function() {
 			{ arrows: 9999 }
 		];
 
-		expect(contest.archersReady()).to.be(true);
+		expect(contest.archersReady()).to.equal(true);
 	});
 });

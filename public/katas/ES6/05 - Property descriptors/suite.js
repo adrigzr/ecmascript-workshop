@@ -10,7 +10,7 @@ describe('patch', () => {
 
 		patch(obj, 'name', 'foo');
 
-		expect(obj.name).to.be('foo');
+		expect(obj.name).to.equal('foo');
 	});
 
 	it('prevents deleting a property', () => {
@@ -21,7 +21,7 @@ describe('patch', () => {
 		try {
 			delete obj.name;
 		} catch (e) {
-			expect(obj.name).to.be('foo');
+			expect(obj.name).to.equal('foo');
 		}
 	});
 
@@ -33,7 +33,7 @@ describe('patch', () => {
 		try {
 			obj.name = 'bar';
 		} catch (e) {
-			expect(obj.name).to.be('foo');
+			expect(obj.name).to.equal('foo');
 		}
 	});
 
@@ -45,7 +45,7 @@ describe('patch', () => {
 		try {
 			patch(obj, 'name', 'bar');
 		} catch (e) {
-			expect(obj.name).to.be('foo');
+			expect(obj.name).to.equal('foo');
 		}
 	});
 
@@ -54,7 +54,7 @@ describe('patch', () => {
 
 		patch(obj, 'name', 'foo');
 
-		expect(Object.keys(obj).length).to.be(0);
+		expect(Object.keys(obj).length).to.equal(0);
 	});
 
 });

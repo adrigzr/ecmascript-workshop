@@ -8,7 +8,7 @@ describe('Template strings', () => {
 	it('concat works for 2 arguments', () => {
 		const result = concat('a', 'b');
 
-		expect(result).to.be('ab');
+		expect(result).to.equal('ab');
 	});
 
 	it('concat works for 9999 arguments', () => {
@@ -16,12 +16,12 @@ describe('Template strings', () => {
 		const data = expected.split('');
 		const result = concat(...data);
 
-		expect(result).to.be(expected);
+		expect(result).to.equal(expected);
 	});
 
 	it('concat works for numbers', () => {
 		const result = concat(1, 2, 3, 4, 5, 6);
 
-		expect(result).to.be('123456');
+		expect(result).to.equal('123456');
 	});
 });

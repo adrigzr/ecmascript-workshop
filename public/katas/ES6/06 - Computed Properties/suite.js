@@ -11,7 +11,7 @@ describe('Class', () => {
 		it('creates with default name', () => {
 			const nerd = new Nerd(90, 'foo');
 
-			expect(nerd.name).to.be('foo');
+			expect(nerd.name).to.equal('foo');
 		});
 
 		it('isHungry is not a function', () => {
@@ -23,25 +23,25 @@ describe('Class', () => {
 		it('returns true when is hungry', () => {
 			const nerd = new Nerd(10, 'foo');
 
-			expect(nerd.isHungry).to.be(true);
+			expect(nerd.isHungry).to.equal(true);
 		});
 
 		it('returns false when is not hungry', () => {
 			const nerd = new Nerd(90, 'foo');
 
-			expect(nerd.isHungry).to.be(false);
+			expect(nerd.isHungry).to.equal(false);
 		});
 
 		it('has a computed property', () => {
 			const nerd = new Nerd(90, 'foo');
 
-			expect(nerd[computedName]).to.be('I\'m foo');
+			expect(nerd[computedName]).to.equal('I\'m foo');
 		});
 
 		it('has a removable computed property', () => {
 			const nerd = new Nerd(90, 'foo');
 
-			expect(delete nerd[computedName]).to.be(true);
+			expect(delete nerd[computedName]).to.equal(true);
 		});
 	});
 });
