@@ -1,21 +1,54 @@
 # Spread operator
 
-Para dominar esta kata deberás creat una función `spread`, que recibirá:
+## ¿Qué es?
 
-  - Como primer argumento un objeto con una función `fn` y los parámetros con los que deberá ser llamada `args` (`{ fn: () => {}, args: [] }`).
-  - Del segundo hasta el penúltimo son datos que podemos despreciar.
-  - Como último argumento un dato que deberá ser devuelto al final de la función.
+El operador de propagación, **spread operator**, permite que una expresión sea expandida en situaciones donde se esperan múltiples argumentos.
 
-Utiliza el operador de expansión así como la desestructuración de parámetros para resolverlo de manera sencilla.
+## Sintaxis:
 
-## Ejemplo:
+**LLamadas a funciones:**
 
 ```javascript
-function spread(obj, ignoreThisVariable, andThis, ..., returnValue) {
-  obj.fn.apply(null, obj.args);
+f(...iterableObj);
+```
 
-  // Do nothing with 'ignoreThisVariable' O_O
+**Arrays literales:**
 
-  return returnValue;
-}
+```javascript
+[...iterableObj, 4, 5, 6]
+```
+
+**Destructuring:**
+
+```javascript
+[a, b, ...iterableObj] = [1, 2, 3, 4, 5];
+```
+
+## Ejemplos:
+
+**Apply**
+
+Es común usar `Function.prototype.apply` en casos donde se require un array como contenedor de los argumentos que se enviarán a una llamada de función:
+
+```javascript
+function f(x, y, z) { }
+
+var args = [0, 1, 2];
+
+f.apply(null, args);
+```
+
+Con el operador spread de ES6, el ejemplo anterior se puede rescribir como:
+
+```javascript
+f.apply(...args);
+```
+
+**Construcción de arrays**
+
+Actualmente se debe escribir código imperativo usando una combinación de métodos como push, splice, concat, etc. Con la sintaxis de propagación spread esta tarea resulta mucho mas concisa.
+
+```javascript
+var parts = ['shoulder', 'knees'];
+var lyrics = ['head', ...parts, 'and', 'toes'];
 ```
