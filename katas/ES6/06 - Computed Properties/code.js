@@ -3,7 +3,8 @@
 
 // Write your Nerd class here!
 class Nerd {
-	constructor(name) {
+	constructor(food, name) {
+		this.food = food;
 		this.name = name;
 	}
 

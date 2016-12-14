@@ -22,6 +22,6 @@ class Human {
 ```
 
 Construye la clase hija `Nerd` con las siguientes funcionalidades:
-  - Cuando se llame a la función `talk` debe decir lo mismo que diría una persona añadiendo al principio `Hola k ase`.
+  - Cuando se llame a la función `talk` debe decir lo mismo que diría una persona (recibe como primer argumento el texto) añadiendo al principio `Hola k ase `.
   - El constructor de la clase `Nerd` recibirá como primer parámetro `food` (un **int** que sobreescribirá el valor de `food`) y como segundo parámetro `name` el nombre del friki.
   - Una función `isHungry` que devolverá true si el valor de `food` es menor de 25.
