@@ -256,7 +256,7 @@ define('workshop/components/mocha-runner', ['exports', 'ember'], function (expor
 
 		sandbox: 'allow-scripts allow-same-origin',
 
-		src: '/sandbox.html',
+		src: 'sandbox.html',
 
 		onEvent: null,
 
@@ -11395,7 +11395,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("workshop/app")["default"].create({"babel":{"presets":["es2017"],"plugins":["transform-decorators-legacy"]},"name":"workshop","version":"0.0.0+edf95533"});
+  require("workshop/app")["default"].create({"babel":{"presets":["es2017"],"plugins":["transform-decorators-legacy"]},"name":"workshop","version":"0.0.0+ede23e06"});
 }
 
 /* jshint ignore:end */
