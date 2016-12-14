@@ -2147,7 +2147,13 @@ define('workshop/routes/help', ['exports', 'ember', 'ember-local-storage', 'work
 	});
 });
 define('workshop/routes/index', ['exports', 'ember'], function (exports, _ember) {
-  exports['default'] = _ember['default'].Route.extend({});
+	exports['default'] = _ember['default'].Route.extend({
+
+		model: function model() {
+			return _ember['default'].$.get('katas/README.md');
+		}
+
+	});
 });
 define('workshop/routes/katas', ['exports', 'ember', 'ember-local-storage'], function (exports, _ember, _emberLocalStorage) {
 	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i]; return arr2; } else { return Array.from(arr); } }
@@ -10500,7 +10506,7 @@ define("workshop/templates/help", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 16,
+            "line": 14,
             "column": 0
           }
         },
@@ -10532,23 +10538,18 @@ define("workshop/templates/help", ["exports"], function (exports) {
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var morphs = new Array(3);
+        var morphs = new Array(2);
         morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
         morphs[1] = dom.createMorphAt(dom.childAt(fragment, [2, 1]), 1, 1);
-        morphs[2] = dom.createMorphAt(fragment, 4, 4, contextualElement);
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
-      statements: [["block", "ember-wormhole", [], ["to", "toolbar-buttons"], 0, null, ["loc", [null, [1, 0], [7, 19]]]], ["inline", "format-markdown", [["get", "model.help", ["loc", [null, [11, 20], [11, 30]]], 0, 0, 0, 0]], [], ["loc", [null, [11, 2], [11, 32]]], 0, 0], ["content", "outlet", ["loc", [null, [15, 0], [15, 10]]], 0, 0, 0, 0]],
+      statements: [["block", "ember-wormhole", [], ["to", "toolbar-buttons"], 0, null, ["loc", [null, [1, 0], [7, 19]]]], ["inline", "format-markdown", [["get", "model.help", ["loc", [null, [11, 20], [11, 30]]], 0, 0, 0, 0]], [], ["loc", [null, [11, 2], [11, 32]]], 0, 0]],
       locals: [],
       templates: [child0]
     };
@@ -10566,7 +10567,7 @@ define("workshop/templates/index", ["exports"], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 2,
+            "line": 6,
             "column": 0
           }
         },
@@ -10578,7 +10579,21 @@ define("workshop/templates/index", ["exports"], function (exports) {
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createComment("");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1, "class", "row full-height");
+        var el2 = dom.createTextNode("\n	");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2, "class", "col-md-12 full-height padding-bottom");
+        var el3 = dom.createTextNode("\n		");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n	");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n");
         dom.appendChild(el0, el1);
@@ -10586,11 +10601,10 @@ define("workshop/templates/index", ["exports"], function (exports) {
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
         var morphs = new Array(1);
-        morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
-        dom.insertBoundary(fragment, 0);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0, 1]), 1, 1);
         return morphs;
       },
-      statements: [["content", "outlet", ["loc", [null, [1, 0], [1, 10]]], 0, 0, 0, 0]],
+      statements: [["inline", "format-markdown", [["get", "model", ["loc", [null, [3, 20], [3, 25]]], 0, 0, 0, 0]], [], ["loc", [null, [3, 2], [3, 27]]], 0, 0]],
       locals: [],
       templates: []
     };
@@ -11381,7 +11395,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("workshop/app")["default"].create({"babel":{"presets":["es2017"],"plugins":["transform-decorators-legacy"]},"name":"workshop","version":"0.0.0+68d9c9e4"});
+  require("workshop/app")["default"].create({"babel":{"presets":["es2017"],"plugins":["transform-decorators-legacy"]},"name":"workshop","version":"0.0.0+edf95533"});
 }
 
 /* jshint ignore:end */

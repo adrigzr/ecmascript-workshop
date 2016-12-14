@@ -1,22 +1,31 @@
 # Computed properties
 
-Ahora vamos a completar un poco más la clase anterior para añadirle alguna propiedad computada.
+Esto es una nueva característica del lenguaje, aunque no deja de ser algo que podíamos hacer anteriormente de una manera un poco más rebuscada.
 
-## Ejercicio 1
-
-¿Te acuerdas de la función `isHungry`?
-Esta devolvía `true` si el valor de `food` era menor de 25. El ejercicio de ahora consiste en crear un getter para esa función, de tal manera que podamos consultar su valor sin necesidad de invocar a una función.
-
-## Ejercicio 2
-
-El segundo ejercicio consiste en crear una propiedad computada que al llamarse nos devuelva la frase `I'm {{this.name}}`.
-La gracia es que esa propiedad tiene que poderse llamar con el valor que va a tener la variable  `computedName`.
-
-Ejemplo:
+Se trata de crear un literal de objeto donde el nombre de una de sus propiedades es computado, es decir, una o varias de sus propiedades tienen nombres que son definidos en función del contenido de variables, en tiempo de ejecución.
 
 ```javascript
-const computedName = 'talk';
-const foo = new Nerd(90, 'foo');
+var elemento = 'agua'
+var modalidad = 'mariposa'
+function deporte(){
+   return 'natacion';
+}
+```
 
-console.log(foo.talk) // I'm foo
+```javascript
+var registroDeporte = {
+  [deporte()]: elemento,
+  [modalidad + '100m']: 'Esta es la modalidad de 100 metros mariposa',
+  [modalidad + '200m']: 'Esta es la modalidad de 200 metros mariposa',
+}
+```
+
+Esto produciría un objeto como el siguiente:
+
+```javascript
+{
+  mariposa100m: "Esta es la modalidad de 100 metros mariposa",
+  mariposa200m: "Esta es la modalidad de 200 metros mariposa",
+  natacion: "agua"
+}
 ```
